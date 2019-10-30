@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="sa">
+<head>
+<meta charset="UTF-8">
+<meta name='viewport' 
+     content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+<title>Learn Vibhakti</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    .m-u-10 {
+        margin-top: 10px
+    }
+    body {
+        padding: 10px;        
+        font-size: 25px;        
+    }
+    #selection input[type=checkbox]{
+        margin-right: 10px;
+    }
+
+    .vibhakti-rupani {
+        width: 100%;
+    }
+    .vibhakti-rupani td, th{
+        border:  1px solid grey;
+        font-size: 0.7em;
+        padding: 0px 10px 0px 10px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    <div id="container-fluid outer">
+        <div id="selectionUI" class="row">
+            <div class="accordion col" id="selection">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Vibhakti selection
+                        </button>
+                    </h2>
+                    </div>
+                
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#selection">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <input type="checkbox" checked id="vib1" name="vib1" value="vib-प्रथमा विभक्तिः"><label for="vib1">प्रथमा विभक्तिः</label>
+                            </div>                            
+                        </div>                        
+                        <div class="row">
+                            <div class="col">
+                                <input type="checkbox" checked id="vib2" name="vib2" value="vib-द्वितीया विभक्तिः"><label for="vib2">द्वितीया विभक्तिः</label>
+                            </div>                            
+                        </div>
+                        <div class="row">
+                                <div class="col">
+                                    <input type="checkbox" checked id="vib3" name="vib3" value="vib-तृतीया विभक्तिः"><label for="vib3">तृतीया विभक्तिः</label>
+                                </div>                            
+                        </div>                        
+                        <div class="row">
+                            <div class="col">
+                                <input type="checkbox" checked id="vib4" name="vib4" value="vib-चतुर्थी विभक्तिः"><label for="vib4">चतुर्थी विभक्तिः</label>
+                            </div>                            
+                        </div>
+                        <div class="row">
+                                <div class="col">
+                                    <input type="checkbox" checked  id="vib5" name="vib5" value="vib-पञ्चमी विभक्तिः"><label for="vib5">पञ्चमी विभक्तिः</label>
+                                </div>                            
+                        </div>  
+                        <div class="row">
+                                <div class="col">
+                                    <input type="checkbox" checked id="vib6" name="vib6" value="vib-षष्ठी विभक्तिः"><label for="vib6">षष्ठी विभक्तिः</label>
+                                </div>                            
+                        </div>
+                        <div class="row">
+                                <div class="col">
+                                    <input type="checkbox" checked id="vib7" name="vib7" value="vib-सप्तमी विभक्तिः"><label for="vib7">सप्तमी विभक्तिः</label>
+                                </div>                            
+                        </div> 
+                        <div class="row">
+                                <div class="col">
+                                    <input type="checkbox" checked id="vib8" name="vib8" value="vib-सम्बोधन प्रथमा विभक्तिः"><label for="vib8">सम्बोधन प्रथमा विभक्तिः</label>
+                                </div>                            
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="card">                    
+                    <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Pratipadikam Selection
+                        </button>
+                    </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#selection">
+                    <div class="card-body" id="pratipadikamSelection">
+                        
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-u-10">
+            <div class="col">
+                <button class="btn btn-primary start-q" type="button">Start</button>
+                <button class="btn btn-primary prev-q" disabled type="button">Prev Question</button>
+                <button class="btn btn-primary next-q" disabled type="button">Next Question</button>                
+            </div>
+        </div>
+        <div id="qa" class="row m-u-10">
+            
+        </div>
+        <template id="qaWidget">
+            <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col"><h5 class="card-title question"></h5></div>
+                        <div class="w-100"></div>
+                        <div class="col"><a href="#" class="btn btn-sm btn-secondary sh-ans">Show / Hide Answer</a></div>
+                    </div>
+                    <div class="row">                        
+                        <div class="col">
+                            <p class="card-text">
+                                    <table class="vibhakti-rupani">
+                                        <tr><th>एकवचनम्</th><th>द्विवचनम्</th><th>बहुवचनम्</th></tr>
+                                        <tr><td class="singular"></td><td class="dual"></td><td class="plural"></td></tr>
+                                    </table>
+                            </p>
+                        </div>                                
+                    </div>
+                                
+                </div>
+            </div>
+            </div>
+        </template>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+(function(){    
+    var qa = [];
+    var currentIndex = 0;
+    var data = getData();    
+    
+    createPratipadikamSelection();
+
+    hookupEvents();
+
+    function hookupEvents() {
+        $(".start-q").bind('click', function(e) {
+            currentIndex = 0;
+            qa = [];
+            var selections = getSelections();
+            if (selections.roots.length === 0 || selections.vibhaktis.length === 0) {
+                $(".prev-q").prop('disabled', true);
+                $(".next-q").prop('disabled', true);
+                return;
+            }
+            qa =getQA(selections);
+            shuffleArray(qa);   
+            generateQAWidget(0);         
+        });
+
+        $(".prev-q").bind('click', function(e) {
+            generateQAWidget(-1);
+        });
+
+        $(".next-q").bind('click', function(e) {
+            generateQAWidget(1);
+        });
+    }
+
+    function generateQAWidget(offset) {
+        currentIndex = currentIndex + offset;
+        $(".prev-q").prop('disabled', (currentIndex === 0));            
+        $(".next-q").prop('disabled', (currentIndex === (qa.length - 1)));
+
+        var qaOuter = document.getElementById("qa");
+        var qaObj = qa[currentIndex];
+        var qaTemp = document.getElementById("qaWidget");
+        var clone = document.importNode(qaTemp.content, true);
+        
+        
+        var qaCont = clone.querySelectorAll('.question');
+        qaCont[0].textContent = qaObj.question.endingSound + " " 
+                               + qaObj.question.gender + " " 
+                               + qaObj.question.root + " " + "शब्दः" + " " 
+                               + qaObj.question.vibhaktiType;
+
+        
+        var ev = clone.querySelectorAll('.vibhakti-rupani .singular');
+        ev[0].textContent = qaObj.answer[0];
+
+        var dv = clone.querySelectorAll('.vibhakti-rupani .dual');
+        dv[0].textContent = qaObj.answer[1];
+
+        var bv = clone.querySelectorAll('.vibhakti-rupani .plural');
+        bv[0].textContent = qaObj.answer[2];  
+
+        var showHide = $(clone.querySelectorAll('.sh-ans')).bind('click', function(){
+            $('.vibhakti-rupani').toggle();
+        });
+        
+        qaOuter.innerHTML = "";
+        qaOuter.appendChild(clone);
+        $('.vibhakti-rupani').toggle();        
+    }
+
+    function getQA(selections) {
+        var qa = [];
+        for(var idx = 0; idx < selections.roots.length; idx++) {
+            var rootShabda = selections.roots[idx];
+            var allForRoot = data.vibhaktiShabdaah[rootShabda];
+            var classification = null;
+            
+            for(var idx1 = 0; idx1 < data.nounClassifications.length; idx1++) {
+                if(data.nounClassifications[idx1].pratipadikani.indexOf(rootShabda) >= 0) {
+                    classification = data.nounClassifications[idx1];
+                    break;
+                }
+            }
+
+            for (var idx2 = 0; idx2 < selections.vibhaktis.length; idx2++) {
+                var vibhIdx = data.vibhaktiTypes.indexOf(selections.vibhaktis[idx2]);
+                var finalIdx = (vibhIdx) * 3;
+                qa.push({
+                    question: {
+                            endingSound: classification.endingSound,
+                            gender: classification.gender,
+                            root: rootShabda,
+                            vibhaktiType: selections.vibhaktis[idx2]
+                    },
+                    answer: [allForRoot[finalIdx], allForRoot[finalIdx + 1], allForRoot[finalIdx + 2]]
+                });
+            }            
+        }
+
+        return qa;
+    }
+
+    function getSelections() {
+        var selRoots = [];
+        var selVibs = []
+        $('#selectionUI input[type=checkbox]:checked').each(function(i, c) {
+            if(c.value.indexOf('root-') >= 0)
+                selRoots.push(c.value.replace('root-',''));
+            else
+                selVibs.push(c.value.replace('vib-', ''))
+        });
+
+       return {
+           roots: selRoots,
+           vibhaktis: selVibs
+       };
+    }
+
+    function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+
+    function createPratipadikamSelection() {
+        var container = document.getElementById('pratipadikamSelection');
+        var item = null;
+        for(var idx = 0; idx < data.nounClassifications.length; idx++){
+            item = data.nounClassifications[idx];
+            var text = document.createTextNode(item.endingSound + " " + item.gender);
+            var heading = document.createElement('h4');
+            heading.appendChild(text);
+            container.appendChild(heading);
+
+            for(var idx1 = 0; idx1 < item.pratipadikani.length; idx1++) {
+                var rootWord = item.pratipadikani[idx1];
+                var chk = document.createElement('input');
+                chk.type = "checkbox";
+                chk.value = "root-" + rootWord;
+                chk.name = "root-" + rootWord;
+                chk.id = "root-" + rootWord;
+                chk.checked = true;
+
+                var lbl = document.createElement('label');
+                lbl.htmlFor = "root-" + rootWord;    
+                lbl.appendChild(document.createTextNode(rootWord));
+                container.appendChild(chk);
+                container.appendChild(lbl);
+            }
+
+            container.appendChild(document.createElement('hr'));
+        }
+    }
+
+    function getData() {
+        var nounClassifications = [
+            {gender: "नपुंसकलिङ्गः", endingSound: "अकारन्तः", pratipadikani: ["फल"]},
+            {gender: "नपुंसकलिङ्गः", endingSound: "उकारन्तः", pratipadikani: ["मधु"]},
+            {gender: "नपुंसकलिङ्गः", endingSound: "इकारन्तः", pratipadikani: ["वारि", "अक्षि"]},
+            {gender: "पुंलिङ्गः", endingSound: "अकारन्तः", pratipadikani: ["राम"]},
+            {gender: "पुंलिङ्गः", endingSound: "उकारन्तः", pratipadikani: ["गुरु"]},
+            {gender: "पुंलिङ्गः", endingSound: "इकारन्तः", pratipadikani: ["हरि", "पति"]},
+            {gender: "स्त्रीलिङ्गः", endingSound: "ईकारन्तः", pratipadikani: ["नदी"]},
+            {gender: "स्त्रीलिङ्गः", endingSound: "इकारन्तः", pratipadikani: ["मति"]},
+            {gender: "स्त्रीलिङ्गः", endingSound: "उकारन्तः", pratipadikani: ["धेनु"]},
+            {gender: "स्त्रीलिङ्गः", endingSound: "ऊकारन्तः", pratipadikani: ["वधू"]}
+        ];
+        var genders = ["पुंलिङ्गः", "स्त्रीलिङ्गः", "नपुंसकलिङ्गः"];
+        var vibhaktiTypes = ["प्रथमा विभक्तिः", "द्वितीया विभक्तिः", "तृतीया विभक्तिः", "चतुर्थी विभक्तिः", "पञ्चमी विभक्तिः", "षष्ठी विभक्तिः", "सप्तमी विभक्तिः", "सम्बोधन प्रथमा विभक्तिः"];
+        
+        var ramaShabdaah = ["रामः", "रामौ","रामाः","रामम्","रामौ","रामान्","रामेण","रामाभ्याम्","रामैः","रामाय","रामाभ्याम्","रामेभ्यः","रामात् / रामाद्","रामाभ्याम्","रामेभ्यः","रामस्य","रामयोः","रामाणाम्","रामे","रामयोः","रामेषु", "राम","रामौ","रामाः"];
+        var nadiShabdaah = ["नदी","नद्यौ", "नद्यः", "नदीम्", "नद्यौ", "नदीः", "नद्या", "नदीभ्याम्", "नदीभिः", "नद्यै", "नदीभ्याम्", "नदीभ्यः", "नद्याः", "नदीभ्याम्", "नदीभ्यः", "नद्याः", "नद्योः", "नदीनाम्", "नद्याम्", "नद्योः", "नदीषु","नदि", "नद्यौ", "नद्यः"];
+        var phalaShabdaah = ["फलम्", "फले", "फलानि", "फलम्", "फले", "फलानि", "फलेन", "फलाभ्याम्", "फलैः", "फलाय", "फलाभ्याम्", "फलेभ्यः", "फलात् / फलाद्", "फलाभ्याम्", "फलेभ्यः", "फलस्य", "फलयोः", "फलानाम्", "फले", "फलयोः", "फलेषु", "फल", "फले", "फलानि"];
+        var hariShabdaah = ["हरिः", "हरी", "हरयः", "हरिम्", "हरी", "हरीन्", "हरिणा", "हरिभ्याम्", "हरिभिः", "हरये", "हरिभ्याम्", "हरिभ्यः", "हरेः", "हरिभ्याम्", "हरिभ्यः", "हरेः", "हर्योः", "हरीणाम्", "हरौ", "हर्योः", "हरिषु", "हरे", "हरी", "हरयः"];
+        var patiShabdaah = ["पतिः", "पती", "पतयः", "पतिम्", "पती", "पतीन्", "पत्या", "पतिभ्याम्", "पतिभिः", "पत्ये", "पतिभ्याम्", "पतिभ्यः", "पत्युः", "पतिभ्याम्", "पतिभ्यः", "पत्युः", "पत्योः", "पतीनाम्", "पत्यौ", "पत्योः", "पतिषु", "पते", "पती", "पतयः"];
+        var matiShabdaah = ["मतिः", "मती", "मतयः", "मतिम्", "मती", "मतीः", "मत्या", "मतिभ्याम्", "मतिभिः", "मत्यै / मतये", "मतिभ्याम्", "मतिभ्यः", "मत्याः / मतेः", "मतिभ्याम्", "मतिभ्यः", "मत्याः / मतेः", "मत्योः", "मतीनाम्", "मत्याम् / मतौ", "मत्योः", "मतिषु", "मते", "मती", "मतयः"]
+        var variShabdaah = ["वारि", "वारिणी", "वारीणि", "वारि", "वारिणी", "वारीणि", "वारिणा", "वारिभ्याम्", "वारिभिः", "वारिणे", "वारिभ्याम्", "वारिभ्यः", "वारिणः", "वारिभ्याम्", "वारिभ्यः", "वारिणः", "वारिणोः", "वारीणाम्", "वारिणि", "वारिणोः", "वारिषु", "वारे / वारि", "वारिणी", "वारीणि"];
+        var askhiShabdaah = ["अक्षि", "अक्षिणी", "अक्षीणि", "अक्षि", "अक्षिणी", "अक्षीणि", "अक्ष्णा", "अक्षिभ्याम्", "अक्षिभिः","अक्ष्णे", "अक्षिभ्याम्", "अक्षिभ्यः", "अक्ष्णः", "अक्षिभ्याम्", "अक्षिभ्यः", "अक्ष्णः", "अक्ष्णोः", "अक्षीणाम्",  "अक्ष्णि / अक्षणि", "अक्ष्णोः", "अक्षिषु","अक्षे / अक्षि", "अक्षिणी", "अक्षीणि"];
+        var guruShabdaah = ["गुरुः", "गुरू", "गुरवः", "गुरुम्", "गुरू", "गुरून्", "गुरुणा", "गुरुभ्याम्", "गुरुभिः","गुरवे", "गुरुभ्याम्", "गुरुभ्यः", "गुरोः", "गुरुभ्याम्", "गुरुभ्यः", "गुरोः", "गुर्वोः", "गुरूणाम्",  "गुरौ", "गुर्वोः", "गुरुषु", "गुरो", "गुरू", "गुरवः"];
+        var dhenuShabdaah = ["धेनुः", "धेनू", "धेनवः", "धेनुम्", "धेनू", "धेनूः", "धेन्वा", "धेनुभ्याम्", "धेनुभिः", "धेन्वै / धेनवे", "धेनुभ्याम्", "धेनुभ्यः", "धेन्वाः / धेनोः", "धेनुभ्याम्", "धेनुभ्यः", "धेन्वाः / धेनोः", "धेन्वोः", "धेनूनाम्", "धेन्वाम् / धेनौ", "धेन्वोः", "धेनुषु", "धेनो", "धेनू", "धेनवः"];
+        var madhuShabdaah = ["मधु", "मधुनी", "मधूनि", "मधु", "मधुनी", "मधूनि", "मधुना", "मधुभ्याम्", "मधुभिः", "मधुने", "मधुभ्याम्", "मधुभ्यः", "मधुनः", "मधुभ्याम्", "मधुभ्यः", "मधुनः", "मधुनोः", "मधूनाम्", "मधुनि", "मधुनोः", "मधुषु", "मधो / मधु", "मधुनी", "मधूनि"];
+        var vadhuShabdaah = ["वधूः", "वध्वौ", "वध्वः", "वधूम्", "वध्वौ", "वधूः", "वध्वा", "वधूभ्याम्", "वधूभिः", "वध्वै", "वधूभ्याम्", "वधूभ्यः", "वध्वाः", "वधूभ्याम्", "वधूभ्यः", "वध्वाः", "वध्वोः", "वधूनाम्", "वध्वाम्", "वध्वोः", "वधूषु", "वधु", "वध्वौ", "वध्वः"];
+
+        var vibhaktiShabdaah = {
+            "राम": ramaShabdaah,
+            "नदी": nadiShabdaah,
+            "फल": phalaShabdaah,
+            "हरि" : hariShabdaah,
+            "पति": patiShabdaah,
+            "मति": matiShabdaah,
+            "वारि": variShabdaah,
+            "अक्षि": askhiShabdaah,
+            "गुरु": guruShabdaah,
+            "धेनु": dhenuShabdaah,
+            "मधु": madhuShabdaah,
+            "वधू": vadhuShabdaah
+        };
+
+        return {
+            nounClassifications: nounClassifications,
+            genders: genders,
+            vibhaktiTypes: vibhaktiTypes,
+            vibhaktiShabdaah: vibhaktiShabdaah
+        };
+    }
+    
+})();
+</script>
+</html> 

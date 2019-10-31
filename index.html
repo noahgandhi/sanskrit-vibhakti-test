@@ -31,6 +31,11 @@
     #pratipadikamSelection input[type=checkbox]{
         margin-left: 10px;
     }
+
+    .blur-text{
+        text-shadow: 0 0 15px black;
+        color: transparent;
+    }
 </style>
 </head>
 <body>
@@ -123,13 +128,11 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col"><h5 class="card-title question"></h5></div>
-                        <div class="w-100"></div>
-                        <div class="col"><a href="#" class="btn btn-sm btn-secondary sh-ans">Show / Hide Answer</a></div>
                     </div>
                     <div class="row">                        
                         <div class="col">
                             <p class="card-text">
-                                    <table class="vibhakti-rupani">
+                                    <table class="vibhakti-rupani blur-text">
                                         <tr><th>एकवचनम्</th><th>द्विवचनम्</th><th>बहुवचनम्</th></tr>
                                         <tr><td class="singular"></td><td class="dual"></td><td class="plural"></td></tr>
                                     </table>
@@ -207,13 +210,12 @@
         var bv = clone.querySelectorAll('.vibhakti-rupani .plural');
         bv[0].textContent = qaObj.answer[2];  
 
-        var showHide = $(clone.querySelectorAll('.sh-ans')).bind('click', function(){
-            $('.vibhakti-rupani').toggle();
+        var showHide = $(clone.querySelectorAll('.vibhakti-rupani')).bind('click', function(){
+            $('.vibhakti-rupani').toggleClass('blur-text');
         });
         
         qaOuter.innerHTML = "";
-        qaOuter.appendChild(clone);
-        $('.vibhakti-rupani').toggle();        
+        qaOuter.appendChild(clone);       
     }
 
     function getQA(selections) {

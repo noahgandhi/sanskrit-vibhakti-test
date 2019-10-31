@@ -114,14 +114,19 @@
         </div>
         <div class="row m-u-10">
             <div class="col">
-                <button class="btn btn-primary start-q" type="button">Start</button>
-                <button class="btn btn-primary prev-q" disabled type="button">Prev Question</button>
-                <button class="btn btn-primary next-q" disabled type="button">Next Question</button>                
+                <button class="btn btn-primary start-q" type="button">Generate Questions</button>                               
             </div>
         </div>
         <div id="qa" class="row m-u-10">
             
         </div>
+        <div class="row m-u-10">
+            <div class="col">
+                <button style = "display:none" class="btn btn-primary prev-q" disabled type="button">Prev Question</button>
+                <button style = "display:none" class="btn btn-primary next-q float-right" disabled type="button">Next Question</button> 
+            </div>
+        </div>
+        
         <template id="qaWidget">
             <div class="col">
             <div class="card">
@@ -132,14 +137,13 @@
                     <div class="row">                        
                         <div class="col">
                             <p class="card-text">
-                                    <table class="vibhakti-rupani blur-text">
-                                        <tr><th>एकवचनम्</th><th>द्विवचनम्</th><th>बहुवचनम्</th></tr>
-                                        <tr><td class="singular"></td><td class="dual"></td><td class="plural"></td></tr>
-                                    </table>
+                                <table class="vibhakti-rupani blur-text">
+                                    <tr><th>एकवचनम्</th><th>द्विवचनम्</th><th>बहुवचनम्</th></tr>
+                                    <tr><td class="singular"></td><td class="dual"></td><td class="plural"></td></tr>
+                                </table>
                             </p>
                         </div>                                
-                    </div>
-                                
+                    </div>                                
                 </div>
             </div>
             </div>
@@ -165,13 +169,15 @@
             qa = [];
             var selections = getSelections();
             if (selections.roots.length === 0 || selections.vibhaktis.length === 0) {
-                $(".prev-q").prop('disabled', true);
-                $(".next-q").prop('disabled', true);
+                $(".prev-q").hide();
+                $(".next-q").hide();
                 return;
             }
             qa =getQA(selections);
             shuffleArray(qa);   
-            generateQAWidget(0);         
+            generateQAWidget(0);
+            $(".prev-q").show();
+            $(".next-q").show();     
         });
 
         $(".prev-q").bind('click', function(e) {

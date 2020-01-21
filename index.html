@@ -36,6 +36,34 @@
         text-shadow: 0 0 15px black;
         color: transparent;
     }
+    .p-cont {
+        border-radius: 5px;
+        border:solid 2px black;
+        padding: 5px;
+        margin: 10px;
+        float:left;
+        clear: right;
+    }
+
+    .t-red{
+        color: red;
+        font-weight: bold;
+    }
+
+    .t-blue{
+        color: blue;
+        font-weight: bold;
+    }
+
+    .t-green{
+        color: green;
+        font-weight: bold;
+    }
+
+    .t-def {
+        color: black;
+        font-weight: bold;
+    }
 </style>
 </head>
 <body>
@@ -53,45 +81,29 @@
                 
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#selection">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <input type="checkbox" checked id="vib1" name="vib1" value="vib-प्रथमा विभक्तिः"><label for="vib1">प्रथमा विभक्तिः</label>
-                            </div>                            
-                        </div>                        
-                        <div class="row">
-                            <div class="col">
-                                <input type="checkbox" checked id="vib2" name="vib2" value="vib-द्वितीया विभक्तिः"><label for="vib2">द्वितीया विभक्तिः</label>
-                            </div>                            
+                        <div class="p-cont">
+                            <input type="checkbox" checked id="vib1" name="vib1" value="vib-प्रथमा विभक्तिः"><label for="vib1">प्रथमा विभक्तिः</label>
                         </div>
-                        <div class="row">
-                                <div class="col">
-                                    <input type="checkbox" checked id="vib3" name="vib3" value="vib-तृतीया विभक्तिः"><label for="vib3">तृतीया विभक्तिः</label>
-                                </div>                            
-                        </div>                        
-                        <div class="row">
-                            <div class="col">
-                                <input type="checkbox" checked id="vib4" name="vib4" value="vib-चतुर्थी विभक्तिः"><label for="vib4">चतुर्थी विभक्तिः</label>
-                            </div>                            
+                        <div class="p-cont">
+                            <input type="checkbox" checked id="vib2" name="vib2" value="vib-द्वितीया विभक्तिः"><label for="vib2">द्वितीया विभक्तिः</label>                            
                         </div>
-                        <div class="row">
-                                <div class="col">
-                                    <input type="checkbox" checked  id="vib5" name="vib5" value="vib-पञ्चमी विभक्तिः"><label for="vib5">पञ्चमी विभक्तिः</label>
-                                </div>                            
-                        </div>  
-                        <div class="row">
-                                <div class="col">
-                                    <input type="checkbox" checked id="vib6" name="vib6" value="vib-षष्ठी विभक्तिः"><label for="vib6">षष्ठी विभक्तिः</label>
-                                </div>                            
+                        <div class="p-cont">
+                            <input type="checkbox" checked id="vib3" name="vib3" value="vib-तृतीया विभक्तिः"><label for="vib3">तृतीया विभक्तिः</label>                            
                         </div>
-                        <div class="row">
-                                <div class="col">
-                                    <input type="checkbox" checked id="vib7" name="vib7" value="vib-सप्तमी विभक्तिः"><label for="vib7">सप्तमी विभक्तिः</label>
-                                </div>                            
-                        </div> 
-                        <div class="row">
-                                <div class="col">
-                                    <input type="checkbox" checked id="vib8" name="vib8" value="vib-सम्बोधन प्रथमा विभक्तिः"><label for="vib8">सम्बोधन प्रथमा विभक्तिः</label>
-                                </div>                            
+                        <div class="p-cont">
+                            <input type="checkbox" checked id="vib4" name="vib4" value="vib-चतुर्थी विभक्तिः"><label for="vib4">चतुर्थी विभक्तिः</label>                            
+                        </div>
+                        <div class="p-cont">
+                            <input type="checkbox" checked  id="vib5" name="vib5" value="vib-पञ्चमी विभक्तिः"><label for="vib5">पञ्चमी विभक्तिः</label>                            
+                        </div>
+                        <div class="p-cont">
+                            <input type="checkbox" checked id="vib6" name="vib6" value="vib-षष्ठी विभक्तिः"><label for="vib6">षष्ठी विभक्तिः</label>                            
+                        </div>
+                        <div class="p-cont">
+                            <input type="checkbox" checked id="vib7" name="vib7" value="vib-सप्तमी विभक्तिः"><label for="vib7">सप्तमी विभक्तिः</label>                            
+                        </div>
+                        <div class="p-cont">
+                            <input type="checkbox" checked id="vib8" name="vib8" value="vib-सम्बोधन प्रथमा विभक्तिः"><label for="vib8">सम्बोधन प्रथमा विभक्तिः</label>                                                    
                         </div>
                     </div>
                     </div>
@@ -288,18 +300,6 @@
             array[i] = array[j];
             array[j] = temp;
         }
-        for (var i = array.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        }
-        for (var i = array.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        }
     }
 
     function createPratipadikamSelection() {
@@ -308,12 +308,10 @@
         var nc = data.getCrudes();
         for(var idx = 0; idx < nc.length; idx++){
             item = nc[idx];
-            var text = document.createTextNode(item.endingSound + " " + item.gender);
-            var heading = document.createElement('h4');
-            heading.appendChild(text);
-            container.appendChild(heading);
 
             for(var idx1 = 0; idx1 < item.pratipadikani.length; idx1++) {
+                var pCont = document.createElement('div');
+                pCont.classList.add(['p-cont']);
                 var rootWord = item.pratipadikani[idx1];
                 var chk = document.createElement('input');
                 var uid = "root-" + item.endingSound + "#" + item.gender + "#" + rootWord;
@@ -327,11 +325,28 @@
                 var lbl = document.createElement('label');
                 lbl.htmlFor = uid;
                 lbl.appendChild(document.createTextNode(rootWord));
-                container.appendChild(chk);
-                container.appendChild(lbl);
+
+                switch(item.gender) {
+                    case "पुंलिङ्गः": 
+                        lbl.classList.add('t-red');
+                        break;
+                    case "स्त्रीलिङ्गः": 
+                        lbl.classList.add('t-green');
+                        break;
+                    case "नपुंसकलिङ्गः": 
+                        lbl.classList.add('t-blue');
+                        break;
+                    default:
+                        lbl.classList.add('t-def');
+                        break;
+                }
+                pCont.appendChild(chk);
+                pCont.appendChild(lbl);
+
+                container.appendChild(pCont);
             }
 
-            container.appendChild(document.createElement('hr'));
+            // container.appendChild(document.createElement('hr'));
         }
     }    
 

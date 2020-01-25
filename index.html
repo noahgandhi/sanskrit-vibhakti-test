@@ -160,7 +160,7 @@
         </template>
     </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script>
@@ -246,23 +246,14 @@
             });
             var declensionsForRoot = data.vibhaktiShabdaah[shabdaIndex].declensions;
             var classification = null;
-
-            var nc = data.getCrudes();
-            for(var idx1 = 0; idx1 < nc.length; idx1++) {
-                if(nc[idx1].pratipadikani.indexOf(rootShabda) >= 0) {
-                    classification = nc[idx1];
-                    break;
-                }
-            }
-
             for (var idx2 = 0; idx2 < selections.vibhaktis.length; idx2++) {
                 var vibhIdx = data.vibhaktiTypes.indexOf(selections.vibhaktis[idx2]);
                 var finalIdx = (vibhIdx) * 3;
                 if(finalIdx < declensionsForRoot.length) {
                     qa.push({
                         question: {
-                                endingSound: classification.endingSound,
-                                gender: classification.gender,
+                                endingSound: endingSound,
+                                gender: gender,
                                 root: rootShabda,
                                 vibhaktiType: selections.vibhaktis[idx2]
                         },
@@ -304,8 +295,15 @@
         var container = document.getElementById('pratipadikamSelection');
         var item = null;
         var nc = data.getCrudes();
+        nc.sort(function(x, y){
+            return x.gender < y.gender;
+        })
+        .sort(function(x, y) {
+            return x.endingSound < y.endingSound;
+        });
         for(var idx = 0; idx < nc.length; idx++){
             item = nc[idx];
+            item.pratipadikani.sort();
 
             for(var idx1 = 0; idx1 < item.pratipadikani.length; idx1++) {
                 var pCont = document.createElement('div');
@@ -470,11 +468,31 @@
                 crude: "भवत्",
                 declensions: ["भवान्", "भवन्तौ", "भवन्तः", "भवन्तम्", "भवन्तौ", "भवतः", "भवता", "भवद्भ्याम्", "भवद्भिः", "भवते", "भवद्भ्याम्", "भवद्भ्यः", "भवतः", "भवद्भ्याम्", "भवद्भ्यः", "भवतः", "भवतोः", "भवताम्", "भवति", "भवतोः", "भवत्सु", "भवन्", "भवन्तौ", "भवन्तः"]
             },
+
+            {
+                gender: "स्त्रीलिङ्गः",
+                endingSound: "ईकारन्तः",
+                crude: "भवती",
+                declensions: ["भवती", "भवत्यौ", "भवत्यः",  "भवतीम्", "भवत्यौ", "भवतीः", "भवत्या", "भवतीभ्याम्", "भवतीभिः", "भवत्यै", "भवतीभ्याम्", "भवतीभ्यः", "भवत्याः", "भवतीभ्याम्", "भवतीभ्यः", "भवत्याः", "भवत्योः", "भवतीनाम्", "भवत्याम्", "भवत्योः", "भवतीषु","भवति", "भवत्यौ", "भवत्यः"]
+            },
+
             {
                 gender: "पुंलिङ्गः",
                 endingSound: "दकारन्तः",
                 crude: "तद्",
                 declensions: ["सः", "तौ", "ते", "तम्", "तौ", "तान्", "तेन", "ताभ्याम्", "तैः", "तस्मै", "ताभ्याम्", "तेभ्यः", "तस्मात्", "ताभ्याम्", "तेभ्यः", "तस्य", "तयोः", "तेषाम्", "तस्मिन्", "तयोः", "तेषु"]
+            },
+            {
+                gender: "स्त्रीलिङ्गः",
+                endingSound: "दकारन्तः",
+                crude: "तद्",
+                declensions: ["सा" , "ते", "ताः", "ताम्", "ते", "ताः", "तया", "ताभ्याम्", "ताभिः", "तस्यै", "ताभ्याम्", "ताभ्यः",  "तस्याः", "ताभ्याम्", "ताभ्यः",  "तस्याः", "तयोः", "तासाम्", "तस्याम्", "तयोः", "तासु"]
+            },
+            {
+                gender: "स्त्रीलिङ्गः",
+                endingSound: "दकारन्तः",
+                crude: "एतद्",
+                declensions: ["एषा" , "एते", "एताः", "एताम् / एनाम्", "एते / एने", "एताः / एनाः", "एतया / एनया", "एताभ्याम्", "एताभिः", "एतस्यै", "एताभ्याम्", "एताभ्यः",  "एतस्याः", "एताभ्याम्", "एताभ्यः",  "एतस्याः", "एतयोः / एनयोः", "एतासाम्", "एतस्याम्", "एतयोः / एनयोः", "एतासु"]
             },
             {
                 gender: "पुंलिङ्गः",
@@ -487,6 +505,12 @@
                 endingSound: "अकारन्तः",
                 crude: "सर्व",
                 declensions: ["सर्वः", "सर्वौ", "सर्वे", "सर्वम्", "सर्वौ", "सर्वान्", "सर्वेण", "सर्वाभ्याम्", "सर्वैः", "सर्वस्मै", "सर्वाभ्याम्", "सर्वेभ्यः", "सर्वस्मात्", "सर्वाभ्याम्", "सर्वेभ्यः", "सर्वस्य", "सर्वयोः", "सर्वेषाम्", "सर्वस्मिन्", "सर्वयोः", "सर्वेषु"]
+            },
+            {
+                gender: "स्त्रीलिङ्गः",
+                endingSound: "अकारन्तः",
+                crude: "सर्वा",
+                declensions: ["सर्वा", "सर्वे", "सर्वाः", "सर्वाम्", "सर्वे", "सर्वाः", "सर्वया", "सर्वाभ्याम्", "सर्वाभिः", "सर्वस्यै", "सर्वाभ्याम्", "सर्वाभ्यः",  "सर्वस्याः", "सर्वाभ्याम्", "सर्वाभ्यः", "सर्वस्याः", "सर्वयोः", "सर्वासाम्", "सर्वस्याम्", "सर्वयोः", "सर्वासु", "सर्वे", "सर्वे", "सर्वाः"]
             },
             {
                 gender: "पुंलिङ्गः",

@@ -297,9 +297,6 @@
         var nc = data.getCrudes();
         nc.sort(function(x, y){
             return x.gender < y.gender;
-        })
-        .sort(function(x, y) {
-            return x.endingSound < y.endingSound;
         });
         for(var idx = 0; idx < nc.length; idx++){
             item = nc[idx];

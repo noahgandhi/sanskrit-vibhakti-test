@@ -115,9 +115,12 @@
                     </h2>
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#selection">
-                    <div class="card-body" id="pratipadikamSelection">
-                        
-                    </div>
+                        <div class="card-body" id="pratipadikamSelection">
+                        <div>
+                            <button id="clearAllP" class="btn btn-primary">Clear All</button>
+                            <button id="checkAllP" class="btn btn-primary">Select All</button>
+                        </div>                        
+                    </div>                    
                     </div>
                 </div>
             </div>
@@ -196,6 +199,21 @@
 
         $(".next-q").bind('click', function(e) {
             generateQAWidget(1);
+        });
+
+        $("#clearAllP").bind('click', function(e){
+            $("#pratipadikamSelection")
+            .find("input")
+            .each(function(e) {
+                this.checked = false;
+            });
+        });
+        $("#checkAllP").bind('click', function(e){
+            $("#pratipadikamSelection")
+            .find("input")
+            .each(function(e) {
+                this.checked = true;
+            });
         });
     }
 

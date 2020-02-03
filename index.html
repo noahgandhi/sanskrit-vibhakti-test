@@ -126,12 +126,17 @@
             </div>
         </div>
         <div class="row m-u-10">
-            <div class="col">
+            <div class="col-sm-4">
                 <button class="btn btn-primary start-q" type="button">Generate Questions</button>                               
             </div>
+            <div class="col-sm-4">
+                <div class="totalQCount"></div>                               
+            </div>           
         </div>
-        <div id="qa" class="row m-u-10">
+        <div class="row m-u-10">
+            <div id="qa" class="col">
             
+            </div>
         </div>
         <div class="row m-u-10">
             <div class="col">
@@ -177,7 +182,7 @@
     hookupEvents();
 
     function hookupEvents() {
-        $(".start-q").bind('click', function(e) {
+        $(".start-q").bind('click', function(e) {$
             currentIndex = 0;
             qa = [];
             var selections = getSelections();
@@ -187,6 +192,7 @@
                 return;
             }
             qa = getQA(selections);
+            $(".totalQCount").text("Total Questions: " + qa.length);
             shuffleArray(qa);   
             generateQAWidget(0);
             $(".prev-q").show();
@@ -229,7 +235,8 @@
         
         
         var qaCont = clone.querySelectorAll('.question');
-        qaCont[0].textContent = qaObj.question.endingSound + " " 
+        qaCont[0].textContent = (currentIndex + 1) + ". " 
+                               + qaObj.question.endingSound + " " 
                                + qaObj.question.gender + " " 
                                + "\"" + qaObj.question.root + "\" " + "शब्दः " 
                                + "\"" + qaObj.question.vibhaktiType + "\"";
